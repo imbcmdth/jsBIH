@@ -1,6 +1,7 @@
-jsBIH
+MIT Licensed
 
-A Bounding-Interval Heirarchy library in pure javascript. No dependancies.
+A non-recursive Bounding-Interval Hierarchy library in pure
+JavaScript with no dependencies.
 
 !!NOTE!!
 
