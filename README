@@ -2,4 +2,12 @@ jsBIH
 
 A Bounding-Interval Heirarchy library in pure javascript. No dependancies.
 
+!!NOTE!!
+
+There are two jsBIH libraries right now. The original, fully functional, and 
+test-passing library is "jsbih.js". 
+
+The file "jsbih_new.js" is an experimental version (that currently lacks proper
+remove() support) that supports more than one object per leaf. 
+
 TODO: Make More ReadMe
