@@ -1,13 +1,13 @@
 <html>
 <head>
-	<title>N-Tree for Javascript - Just the numbers</title>
-	<script src="../libs/jquery.min.js"></script>
-	<script src="../src/ntree.js"></script>
+	<title>I-Tree for Javascript - Just the unbelievable numbers</title>
+    <script src="../libs/jquery.min.js"></script>
+	<script src="../src/itree.js"></script>
 	<script>
 		$(document).ready(function() {
-			var rt = new NTree(3, 33);
+			var rt = new ITree(3);
 			var deleted_set = new Array();
-			var test_name = ['Inserting 10k elements..','Performing 1k window queries..','Inserting 10k more elements..','Performing 1k window queries..','Deleting 1k elements..','Reinserting the deleted 1k elements..','Performing 1k window queries..'];
+			var test_name = ['Inserting 100k elements..','Performing 10k window queries..','Inserting 100k more elements..','Performing 10k window queries..','Deleting 10k elements..','Performing 10k window queries..','Reinserting the deleted 10k elements..','Performing 10k window queries..'];
 			var test_func = new Array(7);
 			test_func[0] = function(i) {
 				var bounds;
@@ -49,29 +49,38 @@
 				i/=10;
 				var original_i = i;
 				while(i > 0) {
-					bounds = [{a:(Math.random()*95000), b:10000}, {a:(Math.random()*95000), b:10000}, {a:(Math.random()*95000), b:10000}];
+					bounds = [{a:(Math.random()*95000), b:25000}, {a:(Math.random()*95000), b:25000}, {a:(Math.random()*95000), b:10000}];
 					output = rt.remove({intervals:bounds});
 					if(output.length > 0) {
 						i-=output.length;
 						while(i < 0) {
 							t=output.pop();
-							rt.insert({intervals:t.d, object:t.leaf});
+							rt.insert({intervals:t.i, object:t.o});
 							i++;
 						}
 						deleted_set = deleted_set.concat(output);
 					}
 				}
 			};
-			test_func[5] = function(i) {
+            test_func[5] = function(i) {
+                var bounds;
+                i/=10;
+                while(i > 0) {
+                    bounds = [{a:(Math.random()*95000), b:1000}, {a:(Math.random()*95000), b:1000}, {a:(Math.random()*95000), b:1000}];
+                    rt.search({intervals:bounds});
+                    i--;
+                }
+            };
+			test_func[6] = function(i) {
 				var output;
 				i = 0;
 				while(deleted_set.length > 0) {
 					output = deleted_set.pop();
-					rt.insert({intervals:output.d, object:output.leaf});
+					rt.insert({intervals:output.i, object:output.o});
 					i++;
 				}
 			};
-			test_func[6] = function(i) {
+			test_func[7] = function(i) {
 				var bounds;
 				i/=10;
 				while(i > 0) {
@@ -89,12 +98,12 @@
 					var test_output = $('<div class="odd_row" id="'+results_name+'"><div>'+test_name[ti]+'</div></div>');
 				$("#results").append(test_output);
 				var start = (new Date).getTime();
-				test_func[ti](10000);
+				test_func[ti](100000);
 				var diff = (new Date).getTime() - start;
 				$('<div>Time To Run: '+diff+'ms</div>').appendTo($("#"+results_name));
 				$('<div>Number of Elements in Tree: '+rt.search({intervals:[{a:-1, b:100600},{a:-1, b:100600}, {a:-1, b:100600}]}).length+'</div>').appendTo($("#"+results_name));
 				ti+=1;
-				if(ti < 7) { 
+				if(ti < 8) { 
 					setTimeout(yield_some, 1000);
 					return;
 				}
@@ -113,8 +122,7 @@
 	</style>
 </head>
 <body>
-<h1>Raw freaking N-Tree numbers!</h1>
-<p>Note the faster searches after re-insertion of the same elements that were deleted.</p>
+<h1>3-Dimensional I-Tree Benchmark</h1>
 <div id="results">
 </div>
 </body>

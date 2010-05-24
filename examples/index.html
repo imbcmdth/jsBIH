@@ -1,31 +1,91 @@
 <html>
 <head>
-	<title>N-Tree insanity!</title>
+	<title>I-Tree insanity!</title>
 	<script type='text/javascript' src="../libs/jquery.min.js"></script>
+	<style>
+		.even_row { padding:10px;
+			background-color:#fefefe;
+		}
+		.odd_row { padding:10px;
+			background-color:#efefff;
+		}
+        .slowest {
+            border:1px solid red;
+        }
+        .fastest {
+            border:1px solid green;
+        }
+        table, tr {
+            border:none;
+            padding:0px;
+            margin:0px;
+        }
+        thead {
+            font-weight:bold;
+        }
+    </style>
 </head>
 <body>
-<h1>R-Tree Library for Javascript</h1>
+<h1>I-Tree Library for Javascript</h1>
 <h3>by <a href="mailto:imbcmdth@hotmail.com">Jon-Carlos Rivera</a></h3>
 <h4>Released under an MIT license</h4>
 <form style="float:right;"action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="10326004"><input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>
-<p>This page contains examples of my N-Tree Library (<a href="ntree.js">ntree.js</a>) for Javascript. The library is an open-source, high performance, and <b>non-recursive</b> implementation of a multidimensional N-Tree volume indexing data structure.</p>
-<p>To contribute to, watch, or fork the N-Tree Library, see the project on GitHub at <a href="http://github.com/imbcmdth/NTree">http://github.com/imbcmdth/NTree</a></p>
+<p>This page contains examples of my Bounding Interval Hierarchy (I-Tree) Library (<a href="itree.js">itree.js</a>) for Javascript. The library is an open-source, extremely high performance, and <b>non-recursive</b> implementation of a multidimensional spatial indexing structure.</p>
+<p>To contribute to, watch, or fork the I-Tree Library, see the project on GitHub at <a href="http://github.com/imbcmdth/ITree">http://github.com/imbcmdth/ITree</a></p>
 <h3>Tests:</h3>
 <h4><a href="..\tests\unit.html">Simple Unit Tests</a></h4>
-<p>Preliminary unit testing examples.
+<p>Preliminary unit testing examples. (note: remove() not yet implemented!)
 </p>
-<h4><a href="simple_test.html">Simple Playground</a></h4>
+<!--<h4><a href="simple_test.html">Simple Playground</a></h4>
 <p>A simple interactive example of the R-Tree. Great for understanding R-Tree principles.
-</p>
-<h4><a href="tree.html">Area Effect</a></h4>
+</p>-->
+<!--<h4><a href="tree.html">Area Effect</a></h4>
 <p>Generates a group of 6500 random small non-overlapping rectangles and shows the resultant tree-structure using a &quot;heat-map&quot;.
-</p>
+</p>-->
 <h4><a href="numbers.html">Benchmark</a></h4>
-<p>Inserts 10k objects. Performs some searches. Inserts another 10k objects. Performs some searches. Deletes and reinserts some objects. Performs some final searches.
-<a href="rtree_benchmark.png">Screenshot of various benchmark results</a></p>
+<p>Inserts 100k objects. Performs some searches. Inserts another 100k objects. Performs some more searches. <!-- Deletes and reinserts some objects. Performs some final searches.-->
+<br /><a href="itree_benchmark.png">Screenshot of various benchmark results</a><br />Amazing Results:<br />
+<table>
+    <thead>
+        <td class="odd_row">User Agent</td>
+        <td class="even_row">Initialize w/ 100k objects</td>
+        <td class="odd_row">Perform 10k searches</td>
+        <td class="even_row">Add 100k more objects</td>
+        <td class="odd_row">Another 10k searches</td>
+    </thead>
+    <tr>
+        <td class="odd_row">Firefox 3.7a4 pre</td>
+        <td class="even_row slowest">6047 ms</td>
+        <td class="odd_row slowest">694 ms</td>
+        <td class="even_row slowest">7075 ms</td>
+        <td class="odd_row slowest">1146 ms</td>
+    </tr>
+    <tr>
+        <td class="odd_row">Safari (webkit r57055)</td>
+        <td class="even_row">4137 ms</td>
+        <td class="odd_row">404 ms</td>
+        <td class="even_row">5047 ms</td>
+        <td class="odd_row">1077 ms</td>
+    </tr>
+    <tr>
+        <td class="odd_row">Opera 10.51 build 3315</td>
+        <td class="even_row fastest">1514 ms</td>
+        <td class="odd_row fastest">327 ms</td>
+        <td class="even_row fastest">1510 ms</td>
+        <td class="odd_row">530 ms</td>
+    </tr>
+    <tr>
+        <td class="odd_row">Chrome 5.0.342.8 beta</td>
+        <td class="even_row">2149 ms</td>
+        <td class="odd_row">529 ms</td>
+        <td class="even_row">2639 ms</td>
+        <td class="odd_row fastest">485 ms</td>
+    </tr>
+</table>
+</p>
 <h4><a href="canvas_test_generate.html">Super-Harcore Example</a></h4>
-<p><b>ONLY run on Opera, Chrome, Safari, or Firefox 3.6 nightlies!</b><br/>
-This test generates 20k dense non-overlapping rectangles of various size and color.
+<p><b>ONLY run on Opera, Chrome, Safari, or Firefox 3.7 nightlies! (WARNING: This might just crash your browser.)</b><br/>
+This test generates 1 million (!!) dense non-overlapping rectangles of various size and color.
 </p>
 </body>
 </html>
