@@ -4,7 +4,7 @@
 <title>More Canvas Fun</title>
 <script type='text/javascript' src='../libs/firebug-lite-compressed.js'></script>
 <script type='text/javascript' src="../libs/jquery.min.js"></script>
-<script type='text/javascript' src="../src/itree.js"></script>
+<script type='text/javascript' src="../src/jsbih.js"></script>
 </head>
 <body>
 	This test generates 1 million (!) rectangles over a an area several hundred times larger than the canvas window. Once insertion has completely, the canvas begins scrolling diagonally. This test shows canvas rendering and event handling of a small subset of a huge dataset at interactive rates.<br/>
@@ -33,7 +33,7 @@ var canvwrap=(function(){
 
 	var canv=null,
 		canvctx=null,
-		rt=new ITree(),
+		rt=new jsBIH(),
 		layers={'main':0},
 		mouse={track:false,x:0,y:0},
 		mouseouts=[],

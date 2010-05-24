@@ -1,5 +1,5 @@
 /****************************************************************************** 
-	itree.js - General-Purpose Non-Recursive Bounding-Interval Hierarchy Library
+	jsbih.js - General-Purpose Non-Recursive Bounding-Interval Hierarchy Library
 	Version 0.2.1, April 7th 2010
 
   Copyright (c) 2010 Jon-Carlos Rivera
@@ -30,7 +30,7 @@ var isArray = function(o) {
  * ITree - A simple interval-tree structure for great results.
  * @constructor
  */
-var ITree = function(dimensions){
+var jsBIH = function(dimensions){
 	// Variables to control tree
 
 	// Number of "interval pairs" per node

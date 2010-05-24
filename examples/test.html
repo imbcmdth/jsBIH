@@ -7,13 +7,13 @@
 	<canvas style="margin-top: 100px;" id="game" width="650px" height="475px">
 	</canvas>
     <script type="text/javascript" src="../lib/json2.js"></script>
-	<script type="text/javascript" src="../src/itree.js"></script>
+	<script type="text/javascript" src="../src/jsbih.js"></script>
 	<script type="text/javascript">
 CanvasWrapper=function(canvasid,width,height){
 
 	var canv=null,
 		canvctx=null,
-		nt=new ITree(2),
+		nt=new jsBIH(2),
 		layers={'main':0},
 		mouse={track:false,x:0,y:0},
 		old_results = []; // Holds old mousing elements (for _mouseMove)
